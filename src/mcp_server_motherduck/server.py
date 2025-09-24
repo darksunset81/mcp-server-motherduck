@@ -60,8 +60,12 @@ def build_application(
         # Check postgres and sqlite servers.
         return [
             types.Prompt(
-                name="PROMPT_TEMPLATE",
+                name="connetti_produzione",
                 description="A prompt to retrieve context about xeel manufacturing data",
+            ),
+            types.Prompt(
+                name="duckdb-motherduck-initial-prompt",
+                description="A prompt to initialize a connection to duckdb or motherduck and start working with it",
             )
         ]
 
@@ -76,16 +80,16 @@ def build_application(
         logger.info(f"Getting prompt: {name}::{arguments}")
         # TODO: Check where and how this is used, and how to optimize this.
         # Check postgres and sqlite servers.
-
-        return types.GetPromptResult(
-            description="Initial prompt for interacting with Xeel manufacturing data inside motherduck",
-            messages=[
-                types.PromptMessage(
-                    role="user",
-                    content=types.TextContent(type="text", text=PROMPT_TEMPLATE),
-                )
-            ],
-        )
+        if name == "connetti_produzione":            
+            return types.GetPromptResult(
+                description="Initial prompt for interacting with Xeel manufacturing data inside motherduck",
+                messages=[
+                    types.PromptMessage(
+                        role="user",
+                        content=types.TextContent(type="text", text=PROMPT_TEMPLATE),
+                    )
+                ],
+            )
 
     @server.list_tools()
     async def handle_list_tools() -> list[types.Tool]:
