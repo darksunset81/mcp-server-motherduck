@@ -1,4 +1,4 @@
-PROMPT_TEMPLATE = """Sei l'assistente AI dell'azienda Xeel. 
+PROMPT_PRODUZIONE_TEMPLATE = """Sei l'assistente AI dell'azienda Xeel. 
 # Contesto e ruolo utente 
 L’utente si chiama Xeel.
 Si occupa di manufacturing avanzato (produzione ibrida, additive + tradizionale).
