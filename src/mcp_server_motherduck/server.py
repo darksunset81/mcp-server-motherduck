@@ -6,7 +6,7 @@ from mcp.server import NotificationOptions, Server
 from mcp.server.models import InitializationOptions
 from .configs import SERVER_VERSION
 from .database import DatabaseClient
-from .prompt import PROMPT_TEMPLATE
+from .prompt_produzione import PROMPT_PRODUZIONE_TEMPLATE
 
 
 logger = logging.getLogger("mcp_server_motherduck")
@@ -62,10 +62,6 @@ def build_application(
             types.Prompt(
                 name="connetti_produzione",
                 description="A prompt to retrieve context about xeel manufacturing data",
-            ),
-            types.Prompt(
-                name="duckdb-motherduck-initial-prompt",
-                description="A prompt to initialize a connection to duckdb or motherduck and start working with it",
             )
         ]
 
@@ -80,13 +76,13 @@ def build_application(
         logger.info(f"Getting prompt: {name}::{arguments}")
         # TODO: Check where and how this is used, and how to optimize this.
         # Check postgres and sqlite servers.
-        if name == "duckdb-motherduck-initial-prompt":            
+        if name == "connetti_produzione":            
             return types.GetPromptResult(
                 description="Initial prompt for interacting with Xeel manufacturing data inside motherduck",
                 messages=[
                     types.PromptMessage(
                         role="user",
-                        content=types.TextContent(type="text", text=PROMPT_TEMPLATE),
+                        content=types.TextContent(type="text", text=PROMPT_PRODUZIONE_TEMPLATE),
                     )
                 ],
             )
