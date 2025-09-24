@@ -60,8 +60,8 @@ def build_application(
         # Check postgres and sqlite servers.
         return [
             types.Prompt(
-                name="duckdb-motherduck-initial-prompt",
-                description="A prompt to initialize a connection to duckdb or motherduck and start working with it",
+                name="AVVIA_AMBIENTE_PRODUZIONE",
+                description="A prompt to retrieve context about xeel manufacturing data",
             )
         ]
 
