@@ -80,7 +80,7 @@ def build_application(
         logger.info(f"Getting prompt: {name}::{arguments}")
         # TODO: Check where and how this is used, and how to optimize this.
         # Check postgres and sqlite servers.
-        if name == "connetti_produzione":            
+        if name == "duckdb-motherduck-initial-prompt":            
             return types.GetPromptResult(
                 description="Initial prompt for interacting with Xeel manufacturing data inside motherduck",
                 messages=[
