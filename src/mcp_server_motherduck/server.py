@@ -6,7 +6,7 @@ from mcp.server import NotificationOptions, Server
 from mcp.server.models import InitializationOptions
 from .configs import SERVER_VERSION
 from .database import DatabaseClient
-from .prompt import PROMPT_TEMPLATE,AVVIA_AMBIENTE_PRODUZIONE
+from .prompt import PROMPT_TEMPLATE
 
 
 logger = logging.getLogger("mcp_server_motherduck")
@@ -60,7 +60,7 @@ def build_application(
         # Check postgres and sqlite servers.
         return [
             types.Prompt(
-                name="AVVIA_AMBIENTE_PRODUZIONE",
+                name="PROMPT_TEMPLATE",
                 description="A prompt to retrieve context about xeel manufacturing data",
             )
         ]
@@ -82,7 +82,7 @@ def build_application(
             messages=[
                 types.PromptMessage(
                     role="user",
-                    content=types.TextContent(type="text", text=AVVIA_AMBIENTE_PRODUZIONE),
+                    content=types.TextContent(type="text", text=PROMPT_TEMPLATE),
                 )
             ],
         )
