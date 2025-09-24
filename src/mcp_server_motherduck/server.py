@@ -6,7 +6,7 @@ from mcp.server import NotificationOptions, Server
 from mcp.server.models import InitializationOptions
 from .configs import SERVER_VERSION
 from .database import DatabaseClient
-from .prompt import PROMPT_TEMPLATE
+from .prompt import PROMPT_TEMPLATE,AVVIA_AMBIENTE_PRODUZIONE
 
 
 logger = logging.getLogger("mcp_server_motherduck")
@@ -80,11 +80,11 @@ def build_application(
             raise ValueError(f"Unknown prompt: {name}")
 
         return types.GetPromptResult(
-            description="Initial prompt for interacting with DuckDB/MotherDuck",
+            description="Initial prompt for interacting with Xeel manufacturing data inside motherduck",
             messages=[
                 types.PromptMessage(
                     role="user",
-                    content=types.TextContent(type="text", text=PROMPT_TEMPLATE),
+                    content=types.TextContent(type="text", text=AVVIA_AMBIENTE_PRODUZIONE),
                 )
             ],
         )
